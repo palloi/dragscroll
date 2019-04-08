@@ -43,6 +43,10 @@
                 (cont = el.container || el)[addEventListener](
                     mousedown,
                     cont.md = function(e) {
+                        if (e.target.hasAttribute('enablefocus') || e.target.closest('[enablefocus]')) {
+                            return true;
+                        }
+
                         if (!el.hasAttribute('nochilddrag') ||
                             _document.elementFromPoint(
                                 e.pageX, e.pageY
